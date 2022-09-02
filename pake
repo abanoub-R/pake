@@ -22,7 +22,10 @@ else
 fi
 
 # clean up
-rm $OUT_FILE
+if [ -f "$OUT_FILE" ]
+then
+ rm $OUT_FILE
+fi
 
 # build
 $CC $ARGS $SOURCE_FILE -o $OUT_FILE
