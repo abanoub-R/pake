@@ -32,12 +32,15 @@ change with pakerc
           the name of the compiled binary
 
 -> should you use pake?
-if you depend on the more complex features of make,
-then for now this isn't for you.
-
-note that I will trying to be implementing some of these
-features when I can, such as rules.
+if your looking for a feature full replacement for make
+then this isn't for you.
 
 if you just want to get things done quick and dirty
 without bashing your head into the screen trying to 
 remember makes weird syntax, then this is for you
+
+-> what's to expect
+while I did say above that this isn't a feature full 
+replacement for make, I will still try to expand its
+feature set at least to the level that make is where 
+applicable.
