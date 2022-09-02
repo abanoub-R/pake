@@ -1,0 +1,36 @@
+#!/bin/sh
+
+MSG_OK="[  OK  ] :"
+MSG_FAIL="[ FAIL ] :"
+
+# default configuration to be used
+DEF_CC="gcc"
+DEF_ARGS="-Werror -Wall"
+DEF_SOURCE_FILE="main.c"
+DEF_OUT_FILE="main"
+
+# load configuration
+if [ -f "./pakerc" ]
+then
+ source ./pakerc
+else
+ echo "$MSG_FAIL pakerc not found, using defaults"
+ CC=$DEF_CC
+ ARGS=$DEF_ARGS
+ SOURCE_FILE=$DEF_SOURCE_FILE
+ OUT_FILE=$DEF_OUT_FILE
+fi
+
+# clean up
+rm $OUT_FILE
+
+# build
+$CC $ARGS $SOURCE_FILE -o $OUT_FILE
+
+# check for the binary, if its there, it was successfully compiled
+if [ -f "$OUT_FILE" ]
+then
+ echo "$MSG_OK compiled $SOURCE_FILE successfully."
+else
+ echo "$MSG_FAIL failed to compile $SOURCE_FILE"
+fi
