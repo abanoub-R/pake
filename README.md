@@ -1,5 +1,5 @@
 # pake
-a quick and easy build maintenence program
+a quick and easy posix-compliant build system
 
 ## installation
 ```
