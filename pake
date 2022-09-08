@@ -1,5 +1,7 @@
 #!/bin/sh
 
+CONFIG=".pakerc"
+
 MSG_OK="[  OK  ] :"
 MSG_FAIL="[ FAIL ] :"
 
@@ -10,9 +12,9 @@ DEF_SOURCE_FILE="main.c"
 DEF_OUT_FILE="main"
 
 # load configuration
-if [ -f "./pakerc" ]
+if [ -f "./$CONFIG" ]
 then
- source ./pakerc
+ source ./$CONFIG
 else
  echo "$MSG_FAIL pakerc not found, using defaults"
  CC=$DEF_CC
