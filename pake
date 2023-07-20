@@ -22,13 +22,27 @@ if [ -f "$OUT_FILE" ]; then
  rm $OUT_FILE
 fi
 
-# Checks for $OUT_FILE and reports it
-# This should be used after every compilation
+# Checks if the command ran before worked
+# This should ONLY be used after every compilation
 check_bin() {
-	if [ -f "$OUT_FILE" ]; then
-  		echo "$MSG_OK compiled $SOURCE_FILE successfully."
-	else
+	if [ $? -ne 0 ]; then
   		echo "$MSG_FAIL failed to compile $SOURCE_FILE"
+		echo "$MSG_FAIL terminating program early due to above error(s)"
+		exit 1
+	else
+  		echo "$MSG_OK compiled $SOURCE_FILE successfully."
+		
+		# Either run or quit the build
+		case "$1" in
+			"run")
+				echo "$MSG_NOTE now running executable '$OUT_FILE'"
+				./$OUT_FILE
+			;;
+
+			*)
+				# Do nothing
+			;;
+		esac
 	fi 
 }
 
