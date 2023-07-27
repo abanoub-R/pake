@@ -1,67 +1,67 @@
------------------ ### pake ### ------------------
+- pake --------------------------------------
 A quick and easy posix-compliant build system.
 
 -> Limitations
-The primary purpose of pake is to provide an easy
-and simple way of building your applications, so
-because of this, pake is limited to one shell 
-script, and has to be configured on a per-package
-basis because of this.
+	The primary purpose of pake is to provide an easy
+	and simple way of building your applications, so
+	because of this, pake is limited to one shell 
+	script, and has to be configured on a per-package
+	basis because of this.
 
--> installation
-Run the following command inside the working directory:
+-> Installation
+	Run the following command inside the working directory:
 
-$ curl -L https://github.com/abanoub-R/pake/raw/main/pake -o ./pake;chmod +x ./pake
+	$ curl -L https://github.com/abanoub-R/pake/raw/main/pake -o ./pake;chmod +x ./pake
 
--> usage
-Pake has been updated to reflect its simple, posix nature.
-Rather than inheriting its configuration options from a local
-.pakerc file, all of pake is implemented in just one script.
-As mentioned in the above 'limitations' section, yes pake has
-to be configured on a per-package-basis, however, this "limitation"
-is actually pake's main strong point, as since pake depends on 
-nothing and is only limited to one shell script, this allows the user
-to easily customize every part of pake to their liking.
+-> Usage
+	Pake has been updated to reflect its simple, posix nature.
+	Rather than inheriting its configuration options from a local
+	.pakerc file, all of pake is implemented in just one script.
+	As mentioned in the above 'limitations' section, yes pake has
+	to be configured on a per-package-basis, however, this "limitation"
+	is actually pake's main strong point, as since pake depends on 
+	nothing and is only limited to one shell script, this allows the user
+	to easily customize every part of pake to their liking.
 
-Pake has a target-like feature similar to make's. Using switch cases, 
-they let you make specific rules and instructions for compilation / building.
-
-Cases rely one one function named 'user_functions' which is executed 
-at the bottom of the script.
-
-Each case will depend on the first argument given to pake,
-and it will have a string to match (i.e build). When $1 and the 
-string given match, it will run the code inside the case. To add
-a new case, add something with this template to user_functions 
-under the first set of double semicolons:
+	Pake has a target-like feature similar to make's. Using switch cases, 
+	they let you make specific rules and instructions for compilation / building.
+	
+	Cases rely one one function named 'user_functions' which is executed 
+	at the bottom of the script.
+	
+	Each case will depend on the first argument given to pake,
+	and it will have a string to match (i.e build). When $1 and the 
+	string given match, it will run the code inside the case. To add
+	a new case, add something with this template to user_functions 
+	under the first set of double semicolons:
 
 	"foo")
 		echo "bar"
 	;;
 
-The above snippet will check if the first argument is "foo", and if it
-is, it will print "bar". You can substitute these with anything, this is
-just an example.
-
-Then, the case can be ran similar to how a target on make would be,
-by specifying it as the first argument after the executable like so:
+	The above snippet will check if the first argument is "foo", and if it
+	is, it will print "bar". You can substitute these with anything, this is
+	just an example.
+	
+	Then, the case can be ran similar to how a target on make would be,
+	by specifying it as the first argument after the executable like so:
 
 	$ pake foo
 	  bar
 
-Because of pakes modularity, all of the above (and this whole README in general)
-is "default" behavior, meaning that if you wanted to, you could change the entire
-script in anyway you want to do whatever you want.
-
---> default configuration options
-This subsection used to be about the ONLY configuration
-options available for pake, however, pake has since been
-updated so this no longer applies.
-
-Instead, pake is more modular and therefore lets you
-do whatever you want. So now the below variables are pake 
-defaults, and if you want to you can make anything you want 
-thanks to pakes new modular design.
+	Because of pakes modularity, all of the above (and this whole README in general)
+	is "default" behavior, meaning that if you wanted to, you could change the entire
+	script in anyway you want to do whatever you want.
+	
+	--> default configuration options
+	This subsection used to be about the ONLY configuration
+	options available for pake, however, pake has since been
+	updated so this no longer applies.
+	
+	Instead, pake is more modular and therefore lets you
+	do whatever you want. So now the below variables are pake 
+	defaults, and if you want to you can make anything you want 
+	thanks to pakes new modular design.
 
       - CC
           the selected compiler.
@@ -75,13 +75,13 @@ thanks to pakes new modular design.
       - OUT_FILE
           the name of the compiled binary
 
--> should you use pake?
-This used to say that if you were looking for a feature-full replacement
-of make, that this isn't for you, however I'd argue the opposite.
-
-Despite pake's default implementation being extremely barebones and minimal,
-as mentioned above, this minimalism is a good thing for pake, as it allows
-the user to do whatever they want with pake however they want to do it.
-
-Because of that, in theory, it's possible to do everything that make can
+-> Should you use pake?
+	This used to say that if you were looking for a feature-full replacement
+	of make, that this isn't for you, however I'd argue the opposite.
+	
+	Despite pake's default implementation being extremely barebones and minimal,
+	as mentioned above, this minimalism is a good thing for pake, as it allows
+	the user to do whatever they want with pake however they want to do it.
+	
+	Because of that, in theory, it's possible to do everything that make can
 and more so long as the user knows a bit of shell script.
