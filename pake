@@ -48,14 +48,13 @@ check_bin() {
 
 # Allows for specific build instructions
 # see the README for more details.
-user_functions() {
- case "$1" in
+case "$1" in
 	"build")
 	  # $CC $ARGS $SOURCE_FILE -o $OUT_FILE
 	  # check_bin
 	;;
- esac
-}
 
-# Use user input as parameter for user_functions()
-user_functions $1
+	*)
+		echo "$MSG_NOTE no arguments given"
+	;;
+esac
