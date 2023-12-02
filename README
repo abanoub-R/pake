@@ -1,4 +1,4 @@
-- pake --------------------------------------
+- pake 1.0.1 ------------------------------------
 A quick and easy posix-compliant build system.
 
 -> Limitations
@@ -23,16 +23,13 @@ A quick and easy posix-compliant build system.
 	nothing and is only limited to one shell script, this allows the user
 	to easily customize every part of pake to their liking.
 
-	Pake has a target-like feature similar to make's. Using switch cases, 
+	Pake has a target-like feature similar to make's using switch cases, 
 	they let you make specific rules and instructions for compilation / building.
-	
-	Cases rely one one function named 'user_functions' which is executed 
-	at the bottom of the script.
 	
 	Each case will depend on the first argument given to pake,
 	and it will have a string to match (i.e build). When $1 and the 
 	string given match, it will run the code inside the case. To add
-	a new case, add something with this template to user_functions 
+	a new case, add something like this template to the $1 switch 
 	under the first set of double semicolons:
 
 	"foo")
