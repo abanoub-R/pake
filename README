@@ -1,84 +1,37 @@
-- pake 1.0.1 ------------------------------------
-A quick and easy posix-compliant build system.
+pake build tool
 
--> Limitations
-	The primary purpose of pake is to provide an easy
-	and simple way of building your applications, so
-	because of this, pake is limited to one shell 
-	script, and has to be configured on a per-package
-	basis because of this.
+	synopsis
+		pake [target] [arguments]
 
--> Installation
-	Run the following command inside the working directory:
+	description
+		pake is a simple posix compliant build script that
+		allows for extensive configuration in a familiar
+		format with no external dependencies
 
-	$ curl -L https://github.com/abanoub-R/pake/raw/main/pake -o ./pake;chmod +x ./pake
+	configuration
+		targets can be defined in switch "$1" on line 51
+		of the script as a string like so:
 
--> Usage
-	Pake has been updated to reflect its simple, posix nature.
-	Rather than inheriting its configuration options from a local
-	.pakerc file, all of pake is implemented in just one script.
-	As mentioned in the above 'limitations' section, yes pake has
-	to be configured on a per-package-basis, however, this "limitation"
-	is actually pake's main strong point, as since pake depends on 
-	nothing and is only limited to one shell script, this allows the user
-	to easily customize every part of pake to their liking.
+		case "$1" in
+			"build")
+				echo "this will run on './pake build''"
+			;;
+		esac
 
-	Pake has a target-like feature similar to make's using switch cases, 
-	they let you make specific rules and instructions for compilation / building.
-	
-	Each case will depend on the first argument given to pake,
-	and it will have a string to match (i.e build). When $1 and the 
-	string given match, it will run the code inside the case. To add
-	a new case, add something like this template to the $1 switch 
-	under the first set of double semicolons:
+		even though it isn't shown, it is reccomended to have
+		a default case for unexpected behavior.
 
-	"foo")
-		echo "bar"
-	;;
+	installation
+		requirements
+			curl
+			posix compliant shell
 
-	The above snippet will check if the first argument is "foo", and if it
-	is, it will print "bar". You can substitute these with anything, this is
-	just an example.
-	
-	Then, the case can be ran similar to how a target on make would be,
-	by specifying it as the first argument after the executable like so:
+		run the following in your shell:
+			
+		$ curl -L https://github.com/abanoub-R/pake/raw/main/pake -o ./pake
+		$ chmod +x ./pake
 
-	$ pake foo
-	  bar
+		the above only copies pake itself, not the LICENSE or README files
 
-	Because of pakes modularity, all of the above (and this whole README in general)
-	is "default" behavior, meaning that if you wanted to, you could change the entire
-	script in anyway you want to do whatever you want.
-	
-	--> default configuration options
-	This subsection used to be about the ONLY configuration
-	options available for pake, however, pake has since been
-	updated so this no longer applies.
-	
-	Instead, pake is more modular and therefore lets you
-	do whatever you want. So now the below variables are pake 
-	defaults, and if you want to you can make anything you want 
-	thanks to pakes new modular design.
 
-      - CC
-          the selected compiler.
-        
-      - ARGS
-          arguments for said compiler
-          
-      - SOURCE_FILE
-          the source file for the compiler
-      
-      - OUT_FILE
-          the name of the compiled binary
-
--> Should you use pake?
-	This used to say that if you were looking for a feature-full replacement
-	of make, that this isn't for you, however I'd argue the opposite.
-	
-	Despite pake's default implementation being extremely barebones and minimal,
-	as mentioned above, this minimalism is a good thing for pake, as it allows
-	the user to do whatever they want with pake however they want to do it.
-	
-	Because of that, in theory, it's possible to do everything that make can
-and more so long as the user knows a bit of shell script.
+			
