@@ -1,29 +1,29 @@
 #!/bin/sh
 
-# Version string
-BUILD_ID="1.0.2"
+# version string
+BUILD_ID="2024.1.25.12.04"
 
-# Mesage symbols
+# mesage symbols
 MSG_OK="[  OK  ] :"
 MSG_FAIL="[ FAIL ] :"
 MSG_NOTE="[ NOTE ] :"
 
-# Print version string
+# print version string
 echo "$MSG_NOTE pake $BUILD_ID"
 
-# Basic configuration
+# basic configuration
 # CC=
 # ARGS=
 # SOURCE_FILE=
 # OUT_FILE=
 
-# Clean up
+# clean up
 if [ -f "$OUT_FILE" ]; then
  rm $OUT_FILE
 fi
 
-# Checks if the command ran before worked
-# This should ONLY be used after every compilation
+# checks if the command ran before worked
+# this should ONLY be used after every compilation
 check_bin() {
 	if [ $? -ne 0 ]; then
   		echo "$MSG_FAIL failed to compile $SOURCE_FILE"
@@ -32,7 +32,7 @@ check_bin() {
 	else
   		echo "$MSG_OK compiled $SOURCE_FILE successfully."
 		
-		# Either run or quit the build
+		# either run or quit the build
 		case "$1" in
 			"run")
 				echo "$MSG_NOTE now running executable '$OUT_FILE'"
