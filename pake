@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Version string
-BUILD_ID="1.0.1"
+BUILD_ID="1.0.2"
 
 # Mesage symbols
 MSG_OK="[  OK  ] :"
@@ -40,18 +40,18 @@ check_bin() {
 			;;
 
 			*)
-				# Do nothing
+				echo "$MSG_NOTE check_bin(): no argument given, skipping binary handling"
 			;;
 		esac
 	fi 
 }
 
-# Allows for specific build instructions
+# allows for specific build instructions
 # see the README for more details.
 case "$1" in
 	"build")
 	  # $CC $ARGS $SOURCE_FILE -o $OUT_FILE
-	  # check_bin
+	  # check_bin $2 
 	;;
 
 	*)
